@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POWER LAGI 1! UNIT 1 NOMBOR BULAT DAN OPERASI</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #ff6b6b;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px auto;
+            max-width: 1000px;
+        }
+        .activity-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .activity-card:hover {
+            transform: scale(1.05);
+        }
+        .activity-card a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .completed {
+            background-color: #d4edda;
+            border: 2px solid #28a745;
+        }
+        .progress-bar {
+            width: 80%;
+            height: 20px;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background-color: #4caf50;
+            width: 0%;
+            transition: width 0.5s;
+        }
+        #score {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌟 POWER LAGI 1! UNIT 1 NOMBOR BULAT DAN OPERASI 🌟</h1>
+    <p>Selesaikan semua aktiviti untuk menjadi juara matematik!</p>
+    
+    <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+    </div>
+    <div id="score">Aktiviti diselesaikan: <span id="completed">0</span>/16</div>
+    
+    <div class="container" id="activities">
+        <!-- Activities will be added here by JavaScript -->
+    </div>
+
+    <script>
+        const activities = [
+            { title: "Aktiviti 1: Kuiz Nombor Bulat", url: "https://wordwall.net/play/93177/701/754" },
+            { title: "Aktiviti 2: Padankan Operasi", url: "https://wordwall.net/play/93237/429/574" },
+            { title: "Aktiviti 3: Cari Jawapan", url: "https://wordwall.net/play/93175/251/906" },
+            { title: "Aktiviti 4: Tebuk Jawapan", url: "https://wordwall.net/play/93236/213/879" },
+            { title: "Aktiviti 5: Pusingan Rawak", url: "https://wordwall.net/play/93239/048/907" },
+            { title: "Aktiviti 6: Susun Nombor", url: "https://wordwall.net/play/93336/785/448" },
+            { title: "Aktiviti 7: Kuiz Cepat", url: "https://wordwall.net/play/93239/314/738" },
+            { title: "Aktiviti 8: Padankan Nilai", url: "https://wordwall.net/play/93336/862/310" },
+            { title: "Aktiviti 9: Teka Nombor", url: "https://wordwall.net/play/93336/893/854" },
+            { title: "Aktiviti 10: Kuiz Akhir", url: "https://wordwall.net/play/93341/698/852" },
+            { title: "Aktiviti 11: Cabaran Operasi", url: "https://wordwall.net/play/93341/802/432" },
+            { title: "Aktiviti 12: Puzzle Matematik", url: "https://wordwall.net/play/93341/800/735" },
+            { title: "Aktiviti 13: Kuiz Pantas", url: "https://wordwall.net/play/93341/795/421" },
+            { title: "Aktiviti 14: Padankan Persamaan", url: "https://wordwall.net/play/93336/997/627" },
+            { title: "Aktiviti 15: Kuiz Terakhir", url: "https://wordwall.net/play/93336/997/214" },
+            { title: "Aktiviti 16: Cabaran Master", url: "https://wordwall.net/play/93232/881/530" }
+        ];
+
+        const container = document.getElementById('activities');
+        let completed = 0;
+
+        activities.forEach((activity, index) => {
+            const card = document.createElement('div');
+            card.className = 'activity-card';
+            card.innerHTML = `
+                <a href="${activity.url}" target="_blank" onclick="markCompleted(${index})">
+                    ${activity.title}
+                </a>
+            `;
+            container.appendChild(card);
+        });
+
+        function markCompleted(index) {
+            const cards = document.querySelectorAll('.activity-card');
+            if (!cards[index].classList.contains('completed')) {
+                cards[index].classList.add('completed');
+                completed++;
+                document.getElementById('completed').textContent = completed;
+                document.getElementById('progress').style.width = `${(completed / 16) * 100}%`;
+                
+                if (completed === 16) {
+                    setTimeout(() => alert("TAHNIAH! Anda telah menamatkan semua aktiviti! 🎉"), 500);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
